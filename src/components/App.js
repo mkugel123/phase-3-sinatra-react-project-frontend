@@ -1,23 +1,35 @@
 import React, { useState } from "react";
+import AddWaiterForm from "./AddWaiterForm";
 import Home from "./Home";
 import TableMap from "./TableMap";
 import Totals from "./Totals";
-import { Switch, Route } from "react-router-dom";
 
 function App() {
+  const [waitersNames, setWaitersNames] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/waiters/names")
+    .then((r) => r.json())
+    .then((data) => setWaitersNames(data))
+    debugger
+  }, []);
+
+  function handleAddWaiterSubmit(name){
+    setWaitersNames([...waitersNames, name])
+  }
+
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/tablemap">
-        <TableMap />
-      </Route>
-      <Route path="/totals">
-        <Totals />
-      </Route>
-    </Switch>
-  );
+    <div>
+      <div>
+        <AddWaiterForm
+          onAddWaiterSubmit={handleAddWaiterSubmit}
+        />
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  )
 }
 
 export default App;
