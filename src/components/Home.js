@@ -3,17 +3,24 @@ import AddWaiterButton from "./AddWaiterButton";
 
 function Home() {
 
-  const [waiters, setWaiters] = useState([])
+  const [waitersNames, setWaitersNames] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/waiters/names")
     .then((r) => r.json())
-    .then((data) => setWaiters(data))
+    .then((data) => setWaitersNames(data))
+    debugger
   }, []);
+
+  function handleAddWaiterSubmit(name){
+    setWaitersNames([...waitersNames, name])
+  }
 
   return (
     <div>
-      <AddWaiterButton/>
+      <AddWaiterButton
+        onAddWaiterSubmit={handleAddWaiterSubmit}
+      />
     </div>
   )
 }

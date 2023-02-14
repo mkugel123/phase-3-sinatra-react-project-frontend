@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function AddWaiterButton(){
+function AddWaiterForm({ onAddWaiterSubmit }){
 
   const [formData, setFormData] = useState({
     name: ""
@@ -23,7 +23,7 @@ function AddWaiterButton(){
       body: JSON.stringify(formData)
     })
     .then((r) => r.json())
-    .then((data) => console.log(data))
+    .then((data) => onAddWaiterSubmit(data.name))
   }
 
   return (
@@ -35,4 +35,4 @@ function AddWaiterButton(){
   )
 }
 
-export default AddWaiterButton
+export default AddWaiterForm
