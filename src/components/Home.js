@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AddWaiterButton from "./AddWaiterButton";
 
 function Home() {
 
-  const [tables, setTables] = useState([])
   const [waiters, setWaiters] = useState([])
-  const [tips, setTips] = useState(0.0)
-  const [total, setTotal] = useState(0.0)
+
+  useEffect(() => {
+    fetch("http://localhost:9292/waiters/names")
+    .then((r) => r.json())
+    .then((data) => setWaiters(data))
+  }, []);
 
   return (
-    <>
-
-    </>
+    <div>
+      <AddWaiterButton/>
+    </div>
   )
 }
 
