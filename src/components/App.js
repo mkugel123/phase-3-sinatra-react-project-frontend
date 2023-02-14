@@ -1,33 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddWaiterForm from "./AddWaiterForm";
-import Home from "./Home";
 import TableMap from "./TableMap";
 import Totals from "./Totals";
 
 function App() {
-  const [waitersNames, setWaitersNames] = useState([])
+  const [waiters, setWaiters] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/waiters/names")
     .then((r) => r.json())
-    .then((data) => setWaitersNames(data))
-    debugger
+    .then((data) => setWaiters(data))
   }, []);
 
   function handleAddWaiterSubmit(name){
-    setWaitersNames([...waitersNames, name])
+    setWaiters([...waiters, name])
   }
 
   return (
     <div>
-      <div>
-        <AddWaiterForm
-          onAddWaiterSubmit={handleAddWaiterSubmit}
-        />
-      </div>
-      <div>
-        
-      </div>
+      <AddWaiterForm
+        onAddWaiterSubmit={handleAddWaiterSubmit}
+      />
+      <TableMap
+        waiters={waiters}
+      />
     </div>
   )
 }
