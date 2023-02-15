@@ -11,11 +11,24 @@ function TableMap() {
     .then((data) => setTables(data))
   }, []);
 
+  function handleOpenCloseTab(updatedTable) {
+      const updatedTables = tables.map((table) => {
+        if (table.id === updatedTable.id) {
+          return updatedTable;
+        } else {
+          return table;
+        }
+      });
+      setTables(updatedTables);
+  }
+
   const tableGrid = tables.map((table) => {
     return (
       <Table
-      key={table.id}
-      tableId = {table.id}
+        key={table.id}
+        tableId = {table.id}
+        isOccupied = {table.occupied}
+        onOpenCloseTab = {handleOpenCloseTab}
       />
     )  
   })
