@@ -23,7 +23,7 @@ function AddWaiterForm({ onAddWaiterSubmit }){
       body: JSON.stringify(formData)
     })
     .then((r) => r.json())
-    .then((data) => onAddWaiterSubmit(data.name))
+    .then((newWaiter) => onAddWaiterSubmit(newWaiter))
   }
 
   return (

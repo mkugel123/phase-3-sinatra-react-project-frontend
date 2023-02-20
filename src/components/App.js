@@ -7,13 +7,13 @@ function App() {
   const [waiters, setWaiters] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:9292/waiters/names")
+    fetch("http://localhost:9292/waiters")
     .then((r) => r.json())
     .then((data) => setWaiters(data))
   }, []);
 
-  function handleAddWaiterSubmit(name){
-    setWaiters([...waiters, name])
+  function handleAddWaiterSubmit(newWaiter){
+    setWaiters([...waiters, newWaiter])
   }
 
   return (

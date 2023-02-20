@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "./Table";
 
-function TableMap() {
+function TableMap({ waiters }) {
 
   const [tables, setTables] = useState([])
 
@@ -29,6 +29,7 @@ function TableMap() {
         tableId = {table.id}
         isOccupied = {table.occupied}
         onOpenCloseTab = {handleOpenCloseTab}
+        waiters={waiters}
       />
     )  
   })
