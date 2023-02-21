@@ -1,13 +1,13 @@
 import React from "react";
 import OpenCloseTab from "./OpenCloseTab";
-import TabForm from "./TabForm";
+import ServiceForm from "./ServiceForm";
 
-function Table({ tableId, isOccupied, onOpenCloseTab, waiters }) {
+function Table({ tableId, isOccupied, onOpenCloseTab, waiters, onServiceFormSubmit }) {
 
   return (
-    <div style={{backgroundColor: isOccupied ? "red" : "lightblue", width: "500px", height: "500px"}}>
-      <h1>{tableId}</h1>
-      {isOccupied ? <TabForm waiters={waiters} tableId={tableId}/> : null}
+    <div style={{backgroundColor: isOccupied ? "red" : "lightblue", width: "500px", height: "150px"}}>
+      <h2>{tableId}</h2>
+      {isOccupied ? <ServiceForm waiters={waiters} tableId={tableId} onServiceFormSubmit={onServiceFormSubmit}/> : null}
       <OpenCloseTab
         isOccupied={isOccupied}
         onOpenCloseTab={onOpenCloseTab}

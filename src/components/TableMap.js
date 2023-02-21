@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "./Table";
 
-function TableMap({ waiters }) {
+function TableMap({ waiters, onServiceFormSubmit }) {
 
   const [tables, setTables] = useState([])
 
@@ -30,13 +30,14 @@ function TableMap({ waiters }) {
         isOccupied = {table.occupied}
         onOpenCloseTab = {handleOpenCloseTab}
         waiters={waiters}
+        onServiceFormSubmit={onServiceFormSubmit}
       />
     )  
   })
 
-
   return (
     <div>
+      <h1>Tables:</h1>
       {tableGrid}
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TabForm({ waiters, tableId }) {
+function ServiceForm({ waiters, tableId, onServiceFormSubmit }) {
 
   // const [foods, setFoods] = useState([])
 
@@ -20,7 +20,6 @@ function TabForm({ waiters, tableId }) {
       ...formData,
       [e.target.name]: e.target.value
     })
-    console.log(formData)
   }
 
   function handleSubmit(e){
@@ -33,19 +32,21 @@ function TabForm({ waiters, tableId }) {
       body: JSON.stringify(formData)
     })
     .then((r) => r.json())
-    .then((service) => console.log(service))
+    .then((newService) => onServiceFormSubmit(newService))
+    .then(alert("Submitted"))
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <select name="waiterId" onChange={handleChange} value={formData.waiterId}>
-        <option>Please Select Waiter</option>
+        <option hidden>Please Select Waiter</option>
         {waiterOptions}
       </select>
       <label>Total:</label>
       <input type="number" name="tabTotal" value={formData.tabTotal} onChange={handleChange}/>
       <label>Tip:</label>
       <select name="tip" value={formData.tip} onChange={handleChange}>
+        <option hidden>Tip Amount</option>
         <option value={.15}>15%</option>
         <option value={.18}>18%</option>
         <option value={.2}>20%</option>
@@ -55,4 +56,4 @@ function TabForm({ waiters, tableId }) {
   )
 }
 
-export default TabForm
+export default ServiceForm
