@@ -40,9 +40,9 @@ function Service({ service, onEditServiceFormSubmit, onDeleteService }) {
   const editForm = (
     <form onSubmit={handleSubmit}>
       <label>Tab:</label>
-      <input name="tabTotal" type="number" value={formData.tabTotal} onChange={handleChange}/>
+      <input name="tabTotal" type="text" value={formData.tabTotal} onChange={handleChange}/>
       <label>Tip:</label>
-      <input name="tip" type="number" value={formData.tip} onChange={handleChange}/>
+      <input name="tip" type="text" value={formData.tip} onChange={handleChange}/>
       <button type="submit">Submit</button>
     </form>
   )
@@ -50,7 +50,6 @@ function Service({ service, onEditServiceFormSubmit, onDeleteService }) {
 
   return (
     <div style={{backgroundColor: "lightgreen", width: "fit-content", height: "fit-content", padding: "5px", margin: "5px"}}>
-      <h2>{service.id}</h2>
       <span>Tab: ${service.tab_total}</span>
       <br/>
       <span>Tip: ${service.tip}</span>

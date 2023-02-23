@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 function ServiceForm({ waiters, tableId, onServiceFormSubmit }) {
 
-  // const [foods, setFoods] = useState([])
-
   const [formData, setFormData] = useState({
     waiterId: 0,
     tableId: tableId,
@@ -43,7 +41,7 @@ function ServiceForm({ waiters, tableId, onServiceFormSubmit }) {
         {waiterOptions}
       </select>
       <label>Total:</label>
-      <input type="number" name="tabTotal" value={formData.tabTotal} onChange={handleChange}/>
+      <input type="text" name="tabTotal" value={formData.tabTotal} onChange={handleChange}/>
       <label>Tip:</label>
       <select name="tip" value={formData.tip} onChange={handleChange}>
         <option hidden>Tip Amount</option>
