@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TableMap from "./TableMap";
-import Totals from "./Totals";
 import Services from "./Services";
+import ServicesByWaiter from "./ServicesByWaiter";
+import AddWaiterForm from "./AddWaiterForm";
 
 function App() {
   const [waiters, setWaiters] = useState([])
@@ -18,6 +19,10 @@ function App() {
     .then((r) => r.json())
     .then((data) => setWaiters(data))
   }, []);
+
+  function handleAddWaiterSubmit(newWaiter){
+    setWaiters([...waiters, newWaiter])
+  }
 
   function handleServiceFormSubmit(newService){
     setServices([...services, newService])
@@ -41,6 +46,9 @@ function App() {
 
   return (
     <div>
+       <AddWaiterForm
+        onAddWaiterSubmit={handleAddWaiterSubmit}
+      />
       <TableMap
         waiters={waiters}
         onServiceFormSubmit={handleServiceFormSubmit}
@@ -50,8 +58,10 @@ function App() {
         onEditServiceFormSubmit={handleEditServiceFormSubmit}
         onDeleteService={handleDeleteService}
       />
-      <Totals
+      <ServicesByWaiter
         waiters={waiters}
+        onEditServiceFormSubmit={handleEditServiceFormSubmit}
+        onDeleteService={handleDeleteService}
       />  
     </div>
   )

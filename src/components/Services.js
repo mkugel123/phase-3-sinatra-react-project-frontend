@@ -8,6 +8,7 @@ function Services({services, onEditServiceFormSubmit, onDeleteService}) {
       <Service
         key={service.id}
         service={service}
+        color = "lightgreen"
         onEditServiceFormSubmit={onEditServiceFormSubmit}
         onDeleteService={onDeleteService}
       />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Service({ service, onEditServiceFormSubmit, onDeleteService }) {
+function Service({ service, onEditServiceFormSubmit, onDeleteService, color }) {
 
   const [isClicked, setIsClicked] = useState(false)
   const [formData, setFormData] = useState({
@@ -49,7 +49,7 @@ function Service({ service, onEditServiceFormSubmit, onDeleteService }) {
 
 
   return (
-    <div style={{backgroundColor: "lightgreen", width: "fit-content", height: "fit-content", padding: "5px", margin: "5px"}}>
+    <div style={{backgroundColor: `${color}`, width: "fit-content", height: "fit-content", padding: "5px", margin: "5px"}}>
       <span>Tab: ${service.tab_total}</span>
       <br/>
       <span>Tip: ${service.tip}</span>
